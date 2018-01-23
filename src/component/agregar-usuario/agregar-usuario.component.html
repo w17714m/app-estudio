@@ -1,0 +1,29 @@
+fecha : <strong>{{fecha | date:'dd/MM/yyyy'}}</strong> 
+
+
+<form [formGroup]="rForm" (ngSubmit)="addPost(rForm)">
+
+
+ <div class="form-group col-md-6">
+    <label>Nombre</label>
+    <input type="text" appCampoValidacion [dato]="'test'" formControlName="user.nombre" class="form-control"   placeholder="Ingrese el nombre"/>
+</div>
+
+<div class="form-group col-md-6">
+    <label>Apellido</label>
+    <p><input type="text"   formControlName="user.apellido" class="form-control" placeholder="Ingrese el apellido"/></p>
+</div>
+
+<div class="form-group col-md-6">
+    <label>Cedula</label>
+    <p><input type="text"  formControlName="user.cedula"  class="form-control" placeholder="Ingrese la cedula"/></p>
+</div> 
+<div class="form-group col-md-6">
+        <input type="submit" class="btn btn-primary" value="Guardar" [disabled]="!rForm.valid">
+</div>
+
+<div class="alert" *ngIf="!rForm.controls['user.nombre'].valid && rForm.controls['user.nombre'].touched || !rForm.controls['user.apellido'].valid && rForm.controls['user.apellido'].touched || !rForm.controls['user.cedula'].valid && rForm.controls['user.cedula'].touched">Informacion ingresada Invalida</div>
+
+
+
+{{_globals | json}}
